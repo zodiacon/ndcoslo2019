@@ -1,0 +1,10 @@
+[package]
+name = "mandelbrot"
+version = "0.1.0"
+authors = ["Pavel Yosifovich <zodiacon@live.com>"]
+edition = "2018"
+
+[dependencies]
+num-complex = "0.2.1"
+png = "0.14.1"
+
