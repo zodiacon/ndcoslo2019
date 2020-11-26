@@ -1,10 +1,7 @@
-extern crate num_complex;
-extern crate png;
 
 use num_complex::Complex;
 use std::fs::File;
 use std::io::BufWriter;
-//use png::HasParameters;
 
 fn main() {
     let from = Complex::new(-1.75, -1.0);
@@ -45,7 +42,7 @@ fn mandelbrot_color(c : &Complex<f64>) -> u8 {
     if z.norm_sqr() > 4.0 { 0xff } else { 0 }
 }
 
-fn save_image(filename : &str, data: &Vec<u8>, width: u32, height: u32) -> Result<(), png::EncodingError> {
+fn save_image(filename : &str, data: &[u8], width: u32, height: u32) -> Result<(), png::EncodingError> {
     let file = File::create(filename).unwrap();
     let ref mut w = BufWriter::new(file);
 
@@ -54,5 +51,5 @@ fn save_image(filename : &str, data: &Vec<u8>, width: u32, height: u32) -> Resul
     encoder.set_depth(png::BitDepth::Eight);
     let mut writer = encoder.write_header().unwrap();
 
-    writer.write_image_data(data.as_slice())
+    writer.write_image_data(data)
 }
