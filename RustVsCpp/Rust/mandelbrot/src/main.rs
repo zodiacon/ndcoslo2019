@@ -4,7 +4,7 @@ extern crate png;
 use num_complex::Complex;
 use std::fs::File;
 use std::io::BufWriter;
-use png::HasParameters;
+//use png::HasParameters;
 
 fn main() {
     let from = Complex::new(-1.75, -1.0);
@@ -50,7 +50,8 @@ fn save_image(filename : &str, data: &Vec<u8>, width: u32, height: u32) -> Resul
     let ref mut w = BufWriter::new(file);
 
     let mut encoder = png::Encoder::new(w, width, height);
-    encoder.set(png::ColorType::Grayscale).set(png::BitDepth::Eight);
+    encoder.set_color(png::ColorType::Grayscale);
+    encoder.set_depth(png::BitDepth::Eight);
     let mut writer = encoder.write_header().unwrap();
 
     writer.write_image_data(data.as_slice())

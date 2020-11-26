@@ -5,6 +5,6 @@ authors = ["Pavel Yosifovich <zodiacon@live.com>"]
 edition = "2018"
 
 [dependencies]
-num-complex = "0.2.1"
-png = "0.14.1"
+num-complex = "0.3.1"
+png = "0.16.7"
 

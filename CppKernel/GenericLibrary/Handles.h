@@ -41,7 +41,7 @@ struct GenericHandle {
 	}
 
 	T* GetAddressOf() {
-		NT_ASSERT(Traits::IsValid(_handle));
+		NT_ASSERT(!Traits::IsValid(_handle));
 		return &_handle;
 	}
 
